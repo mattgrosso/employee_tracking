@@ -13,4 +13,8 @@ class Employee
   def toggle_satisfaction
     @satisfactory = !@satisfactory
   end
+
+  def give_raise(dollars)
+    @salary += dollars
+  end
 end

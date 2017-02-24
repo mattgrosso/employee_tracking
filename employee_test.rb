@@ -32,4 +32,11 @@ class EmployeeTest < Minitest::Test
 
     refute_equal starting_value, bob.satisfactory
   end
+
+  def test_give_raise_raises_salary
+    starting_value = bob.salary
+    bob.give_raise(500)
+
+    assert_equal starting_value + 500, bob.salary
+  end
 end
