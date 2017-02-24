@@ -25,4 +25,11 @@ class EmployeeTest < Minitest::Test
 
     assert_equal review_paragraph.length, bob.review.length
   end
+
+  def test_employee_satisfying
+    starting_value = bob.satisfactory
+    bob.toggle_satisfaction
+
+    refute_equal starting_value, bob.satisfactory
+  end
 end
