@@ -18,4 +18,11 @@ class EmployeeTest < Minitest::Test
     assert_equal "5555555555", bob.phone
     assert_equal 10000, bob.salary
   end
+
+  def test_add_employee_review
+    review_paragraph = "I was once called the worst audience participant Cirque du Soleil ever had. Fried cheese… with club sauce. George Bush doesn't care about black puppets. I could use a leather jacket for when I'm on my hog and have to go into a controlled slide. Happy."
+    bob.review = review_paragraph
+
+    assert_equal review_paragraph.length, bob.review.length
+  end
 end
