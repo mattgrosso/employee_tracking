@@ -17,6 +17,10 @@ class DepartmentTest < Minitest::Test
     @sue ||= Employee.new("Sue", "sue@sue.com", "4444444444", 20000)
   end
 
+  def lisa
+    @lisa ||= Employee.new("Lisa", "lisa@lisa.com", "3333333333", 40000)
+  end
+
   def test_department_exists
     assert Department
   end
@@ -39,6 +43,20 @@ class DepartmentTest < Minitest::Test
     sales.add_employee(sue)
 
     assert_equal 30000, sales.total_salary
+  end
 
+  def test_give_raise
+    sales.add_employee(bob)
+    sales.add_employee(sue)
+    sales.add_employee(lisa)
+    sue_starting_salary = sue.salary
+    bob_starting_salary = bob.salary
+    bob.toggle_satisfaction
+    starting_total_salary = sales.total_salary
+    sales.give_raise(2000)
+
+    assert_equal starting_total_salary + 2000, sales.total_salary
+    assert_equal sue_starting_salary + 1000, sue.salary
+    assert_equal bob_starting_salary, bob.salary
   end
 end
